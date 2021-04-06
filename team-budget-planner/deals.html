@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Deals</title>
+    <link rel="stylesheet" href="css/main.css">
+    <script src="create_table.js"></script>
+</head>
+<body onload="CreateTableFromJSON()">
+    <div class="container">
+        <p id="showData"></p>
+        <H3>Add/Update Deal</H3>
+        <p id="newData"> 
+            <input type="hidden" id="id"/><br/>
+            <label>Client Name </label><input type="text"  id="clientNameInput" /><br />
+            <label>Project Name </label><input type="text"  id="projectNameInput" /><br />
+            <label>Project Manager </label><input type="text"  id="projectManagerInput" /><br />
+            <label>Vendor Name</label><input type="text"  id="vendor" /><br />
+            <label>Project Cost </label><input type="number"  id="projectCostInput" /><br />
+        </p>
+        <input type="button" onclick="AddNewDeal()" value="Save" />
+    </div>
+    
+</body>
