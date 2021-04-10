@@ -33,6 +33,9 @@ public class PaymentInfo {
 	@Column(name="cvv")
 	private String cvv;
 	
+	@Column(name="address")
+	private String address;
+	
 	@ManyToOne
 	@JoinColumn(name="user_id")
 	private User user;

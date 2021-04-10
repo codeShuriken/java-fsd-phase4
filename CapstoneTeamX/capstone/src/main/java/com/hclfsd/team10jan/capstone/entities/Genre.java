@@ -17,6 +17,6 @@ public class Genre {
     private Integer id;
     
     @Column(name="name")
-    private String Name;
+    private String name;
 
 }

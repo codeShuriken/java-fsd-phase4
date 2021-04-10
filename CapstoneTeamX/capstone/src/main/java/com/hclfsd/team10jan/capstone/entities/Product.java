@@ -2,6 +2,7 @@ package com.hclfsd.team10jan.capstone.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -27,7 +28,13 @@ public class Product {
 	@Column(name="price")
 	private Double price;
 	
-	@ManyToOne
+	@Column(name="artist")
+	private String artist;
+	
+	@Column(name="type")
+	private String type;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="category_id")
 	private Category category;
 }

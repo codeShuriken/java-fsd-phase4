@@ -44,7 +44,6 @@ public class User {
     private String roles;
 	
 	@Column(name="phone_number")
-	@Min(value=1_000_000_000, message = "*Your phone number should be 10 digits")
 	private Long phoneNumber;
 	
 	public User(String username, String email, String password, Long phoneNumber, String roles) {

@@ -2,6 +2,7 @@ package com.hclfsd.team10jan.capstone.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -25,7 +26,7 @@ public class Category {
 	@Column(name="name")
 	private String name;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="genre_id")
 	private Genre genre;
 }

@@ -25,10 +25,6 @@ public class Track {
     
     @Column(name="price")
     private Double price;
-
-    @ManyToOne
-    @JoinColumn(name="album_id")
-    private Album album;
     
     @ManyToOne
     @JoinColumn(name="product_id")

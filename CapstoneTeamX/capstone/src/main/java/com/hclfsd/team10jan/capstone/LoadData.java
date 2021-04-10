@@ -22,7 +22,10 @@ public class LoadData {
 	  CommandLineRunner initDatabase(UserRepository repository) {
 
 	    return args -> {
-	      log.info("Preloading " + repository.save(new User("abc123", "abc123@gmail.com", passwordEncoder.encode("abc123"), 5186456585L, "ROLE_USER;ROLE_ADMIN")));
+	    	User user = repository.findByUsername("abc123");
+	    	if (user == null) {
+	  	      log.info("Preloading " + repository.save(new User("abc123", "abc123@gmail.com", passwordEncoder.encode("abc123"), 5186456585L, "ROLE_USER;ROLE_ADMIN")));
+	    	}
 	    };
 	  }
 }
