@@ -4,9 +4,9 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import com.hclfsd.team10jan.capstone.entities.Cart;
-import com.hclfsd.team10jan.capstone.entities.User;
+import com.hclfsd.team10jan.capstone.entities.Transaction;
 
 @Repository
-public interface CartRepository extends CrudRepository<Cart, Integer> {
-	public Iterable<Cart> findByUser(User user);
+public interface TransactionRepository extends CrudRepository<Transaction, Integer>{
+	public Transaction findByCart(Cart cart);
 }

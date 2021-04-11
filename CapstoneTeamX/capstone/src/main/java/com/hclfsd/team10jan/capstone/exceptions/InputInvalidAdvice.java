@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ControllerAdvice
-class ForeignKeyAdvice {
+class InputInvalidAdvice {
 
   @ResponseBody
-  @ExceptionHandler(ForeignKeyException.class)
+  @ExceptionHandler(InputInvalidException.class)
   @ResponseStatus(HttpStatus.BAD_REQUEST)
-  String fkHandler(ForeignKeyException ex) {
+  String inputInvalidHandler(InputInvalidException ex) {
     return ex.getMessage();
   }
 }

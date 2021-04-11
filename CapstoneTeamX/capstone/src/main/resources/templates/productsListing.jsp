@@ -3,6 +3,8 @@
       xmlns:th="http://thymleaf.org">
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -60,23 +62,13 @@
 </head>
 <body>
 	<div class="container">
-		<h1 class="display-3">Products Page</h1>
-		<p>This is the products page!</p>
+		<h1 class="display-4"><em><span style="color: #0000ff;"><span style="color: #993300;">All Products</span>🎶</span></em></h1>
+		<p>Checkout all the awesome products available now!</p>
 		<hr class="featurette-divider">
 		<div class="row">
-			<div class="col-10">
-				<div class="dropdown">
-				  <button class="btn btn-primary btn-lg dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				    Add Product
-				  </button>
-				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-				    <a class="dropdown-item" href="/admin/addTrack">Track</a>
-				    <a class="dropdown-item" href="/admin/addAlbum">Album</a>
-				  </div>
-				</div>
-			</div>
+			<div class="col-10"></div>
 			<div class="col">
-				<a class="btn btn-danger btn-lg" href="/logout" role="button">Logout</a></br>
+				<a class="btn btn-success btn-md" href="/music/cart" role="button">Shopping Cart</a></br>
 			</div>
 		</div>
 		<hr class="featurette-divider">
@@ -110,7 +102,7 @@
 					<th>Type</th>
 					<th>Price($)</th>
 					<th style="display:none;">Description</th>
-					<th>Action</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -124,24 +116,28 @@
 		           <td th:text="${r.price}"/>
 		           <td style="display:none;" th:text="${r.description}"/>
 		           <td>
-		           	<a th:href="@{/admin/aboutProduct(productId=${r.pid})}" class="btn btn-info btn-sm">Info</a>
-		           	<a th:href="@{/admin/updateProduct1(productId=${r.pid})}" class="btn btn-warning btn-sm">Update</a>
-		           	<a th:href="@{/admin/deleteProduct(productId=${r.pid})}" class="btn btn-danger btn-sm"
-		           	onclick="if (!(confirm('Are you sure you want to delete this product?'))) return false;">Delete</a>		
+		           	<a th:href="@{/music/aboutProduct(productId=${r.pid})}" class="btn btn-outline-info btn-sm">Info</a>	
            		  </td>
 			     </tr>
 			</tbody>
 		</table>
+		<hr class="featurette-divider">
+		
 	</div>
 	
-	
-	<div class="container">
-		<hr class="featurette-divider">
-		<a class="btn btn-link btn-lg"  th:href="@{/home}">Back to Home Page</a>
+	<div class="row">
+		<div class="col-5">
+		</div>
+		<div class="col">
+			<a class="btn btn-primary" href="/home" role="button">Back</a>
+			<a class="btn btn-danger" href="/logout" role="button">Logout</a>
+			<a class="btn btn-secondary" href="/home" role="button">Home</a>
+		</div>
 	</div>
 	
 	<footer class="footer">
       <div class="container">
+      	<hr class="featurette-divider">
         <span class="text-muted"> &nbsp;&nbsp;&copy; 2021 Copyright: Team X </span>
       </div>
     </footer>

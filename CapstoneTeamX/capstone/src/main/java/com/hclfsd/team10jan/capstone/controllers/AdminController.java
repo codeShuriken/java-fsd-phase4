@@ -1,6 +1,7 @@
 package com.hclfsd.team10jan.capstone.controllers;
 
 import java.security.Principal;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,14 +10,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.hclfsd.team10jan.capstone.entities.CartResult;
 import com.hclfsd.team10jan.capstone.entities.Category;
 import com.hclfsd.team10jan.capstone.entities.Genre;
+import com.hclfsd.team10jan.capstone.entities.OrdersResult;
 import com.hclfsd.team10jan.capstone.entities.Result;
 import com.hclfsd.team10jan.capstone.entities.User;
 import com.hclfsd.team10jan.capstone.exceptions.ForeignKeyException;
 import com.hclfsd.team10jan.capstone.services.CategoryService;
 import com.hclfsd.team10jan.capstone.services.GenreService;
+import com.hclfsd.team10jan.capstone.services.MusicService;
 import com.hclfsd.team10jan.capstone.services.ProductService;
 import com.hclfsd.team10jan.capstone.services.UserService;
 
@@ -38,11 +43,40 @@ public class AdminController {
 	@Autowired
 	private ProductService productService;
 	
+	@Autowired
+	private MusicService musicService;
+	
 	@GetMapping("/customers")
 	public String getCustomers(ModelMap model) {
 		Iterable<User> users = userService.getAllUsers();
 		model.addAttribute("user", users);
 		return "customers";
+	}
+	
+	@GetMapping("/viewOrders")
+	public String getOrders(@RequestParam(value="user")String username, ModelMap model) {
+		//Display all carts of the user
+		List<OrdersResult> res = musicService.findAllOrders(username);
+	
+		model.addAttribute("res", res);
+		return "ordersAdmin";
+	}
+	
+	@GetMapping("/viewCartItems")
+	public String viewCartItems(@RequestParam(value="transactionId") Integer tid, ModelMap model) {
+		List<CartResult> results = musicService.getCartItems(tid);
+		Double total = musicService.getTotal(results);
+		model.addAttribute("res", results);
+		model.addAttribute("total", total);
+		return "cartItemsAdmin";
+	}
+	
+	@GetMapping("/changeStatus")
+	public String changeStatus(@RequestParam(value="transactionId") Integer tid, ModelMap model, RedirectAttributes redirectAttributes) {
+		User user = musicService.changeStatus(tid);
+		  redirectAttributes.addAttribute("user", user.getUsername());
+
+		return "redirect:/admin/viewOrders";
 	}
 	
 	@GetMapping("/products")

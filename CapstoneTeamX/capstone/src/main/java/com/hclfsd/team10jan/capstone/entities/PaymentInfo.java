@@ -1,5 +1,6 @@
 package com.hclfsd.team10jan.capstone.entities;
 
+import java.math.BigInteger;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
@@ -10,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,13 +28,14 @@ public class PaymentInfo {
     private Integer id;
 	
 	@Column(name="card_number")
-	private String cardNumber;
+	private BigInteger cardNumber;
 	
 	@Column(name="expiration")
-	private String expiration;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate expiration;
 	
 	@Column(name="cvv")
-	private String cvv;
+	private Integer cvv;
 	
 	@Column(name="address")
 	private String address;
@@ -39,4 +43,11 @@ public class PaymentInfo {
 	@ManyToOne
 	@JoinColumn(name="user_id")
 	private User user;
+
+	public PaymentInfo(BigInteger cardNumber, LocalDate expiration, Integer cvv, String address) {
+		this.cardNumber = cardNumber;
+		this.expiration = expiration;
+		this.cvv = cvv;
+		this.address = address;
+	}
 }

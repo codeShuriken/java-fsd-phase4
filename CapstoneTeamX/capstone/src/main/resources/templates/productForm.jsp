@@ -19,7 +19,7 @@
 			<input type="hidden" th:value="*{type1}" name="type1">
 			<label for="title">Title</label>
 			<input type="text" th:value="*{title}" name="title" required
-			 		class="form-control mb-4 col-4" placeholder="Name">
+			 		class="form-control mb-4 col-4" placeholder="Title">
 			 
 			<label for="artist">Artist</label>
 			<input type="text" th:value="*{artist}" name="artist" required
@@ -27,7 +27,7 @@
 			 		
 			<label for="price">Price</label>
 			<input type="number" th:value="*{price}" name="price" required step=".01"
-			 		class="form-control mb-4 col-4" placeholder="Name">
+			 		class="form-control mb-4 col-4" placeholder="$$$">
 		   
 		    <label for="genreName">Genre</label>
 			 <select class="form-control mb-3 col-4" name="genre">

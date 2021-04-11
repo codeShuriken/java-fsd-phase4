@@ -36,7 +36,7 @@ public class Transaction {
     private LocalDate purchasedOn;
  	
  	@ManyToOne
- 	@JoinColumn(name="payment_info")
+ 	@JoinColumn(name="payment_info_id")
  	private PaymentInfo paymentInfo;
  	
 }
